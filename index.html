@@ -1,1 +1,208 @@
+<!doctype html>
+<html lang="so">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday - The Movie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0;overflow:hidden;background:#000;color:#fff;font-family:Quicksand,system-ui,sans-serif;-webkit-tap-highlight-color:transparent;user-select:none}
+.sc{position:fixed;inset:0;display:none;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+.sc.on{display:flex}
+.btn{border:0;border-radius:30px;padding:14px 30px;background:linear-gradient(135deg,#ff5fa2,#ff9a4d);color:#fff;font:700 17px Quicksand,sans-serif;box-shadow:0 6px 24px #ff5fa288;cursor:pointer}
+/* FILIM */
+#film{flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 45%,#2e2310,#000 72%)}
+.lb{position:fixed;left:0;right:0;height:11vh;background:#000;z-index:3}.lb.t{top:0}.lb.b{bottom:0}
+#grain{position:fixed;inset:0;pointer-events:none;z-index:2;background:repeating-linear-gradient(0deg,#fff1 0 1px,transparent 1px 3px);animation:gr .25s steps(2) infinite}
+@keyframes gr{50%{transform:translateY(2px);opacity:.4}}
+#ft{position:relative;z-index:1;padding:0 20px;color:#f3d98b;opacity:0;min-height:130px}
+#ft small{display:block;font:500 14px Quicksand,sans-serif;letter-spacing:5px;text-transform:uppercase;color:#d8c48a}
+#ft h1{font:700 clamp(30px,9vw,54px)/1.2 Cinzel,serif;margin:10px 0;letter-spacing:3px;text-shadow:0 0 18px #f3d98b88}
+@keyframes ftx{0%{opacity:0;transform:scale(.94)}18%{opacity:1;transform:none}82%{opacity:1}100%{opacity:0}}
+#start{position:relative;z-index:4;margin-top:26px;opacity:0;pointer-events:none;transition:opacity .8s}
+#start.show{opacity:1;pointer-events:auto}
+/* STORIES */
+#stories{background:#000}
+#slides{position:absolute;inset:0}
+.sl{position:absolute;inset:0;opacity:0;transition:opacity .35s;overflow:hidden}
+.sl.on{opacity:1}
+.sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sl.on img{animation:kb 4.5s ease-out both}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12)}}
+.sl::after{content:'';position:absolute;inset:0;background:linear-gradient(#0006,transparent 25%,transparent 55%,#000b)}
+.cap{position:absolute;z-index:2;left:0;right:0;bottom:12%;padding:0 24px;text-align:center;font:700 24px/1.4 Quicksand,sans-serif;text-shadow:0 2px 10px #000a}
+.sl.on .cap{animation:up .7s .2s both}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+#pb{position:absolute;z-index:5;top:calc(10px + env(safe-area-inset-top,0px));left:10px;right:10px;display:flex;gap:4px}
+#pb i{flex:1;height:3px;background:#fff4;border-radius:3px;overflow:hidden}
+#pb b{display:block;height:100%;width:0;background:#fff}
+#sh{position:absolute;z-index:5;top:calc(26px + env(safe-area-inset-top,0px));left:14px;display:flex;align-items:center;gap:10px;font-size:15px}
+#sh .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#ff5fa2,#ffd84d);display:flex;align-items:center;justify-content:center}
+#sh em{font-style:normal;opacity:.7}
+/* PUZZLE */
+#puz,#end{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-left:16px;padding-right:16px}
+#puz{background:linear-gradient(160deg,#2b0f3a,#0d0620)}
+#puz h2{margin:0 0 6px;font:26px Pacifico,cursive;color:#ffd1ea}
+#puz p{margin:0 0 18px;opacity:.85;font-size:14px}
+#board{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:min(88vw,56vh,380px);aspect-ratio:1;transition:gap .6s}
+#board.done{gap:0}
+.pc{background-size:300% 300%;border-radius:6px;cursor:pointer;transition:transform .2s,border-radius .6s;box-shadow:0 2px 8px #0008}
+#board.done .pc{border-radius:0}
+.pc.sel{transform:scale(.9);outline:3px solid #ffd84d}
+/* DHAMMAAD */
+#end{background:radial-gradient(circle at 50% 35%,#5a1a5f,#14061f 75%)}
+#end h1{font:clamp(40px,13vw,72px)/1.2 Pacifico,cursive;color:#ffd1ea;text-shadow:0 0 14px #ff5fa2,0 0 34px #ff5fa2aa;margin:8px 0}
+#end p{font-size:18px;line-height:1.6;margin:6px 0}
+.cf{position:fixed;top:0;width:9px;height:13px;z-index:20;pointer-events:none}
+</style>
+</head>
+<body>
+
+<section class="sc on" id="film">
+  <div class="lb t"></div><div class="lb b"></div><div id="grain"></div>
+  <div id="ft"></div>
+  <button class="btn" id="start">▶ Bilow Filimka</button>
+</section>
+
+<section class="sc" id="stories">
+  <div id="slides"></div>
+  <div id="pb"></div>
+  <div id="sh"><span class="av">🎂</span><b id="shn"></b><em>hadda</em></div>
+</section>
+
+<section class="sc" id="puz">
+  <h2>🧩 Isku xir sawirka</h2>
+  <p>Taabo laba qaybood si aad u kala beddesho</p>
+  <div id="board"></div>
+</section>
+
+<section class="sc" id="end">
+  <div style="font-size:30px;letter-spacing:6px">🎉🎂🎉</div>
+  <h1 id="en"></h1>
+  <p>Maalin dhalasho oo aad u wacan!<br>Ilaah ha ku siiyo farxad iyo caafimaad.</p>
+  <p style="opacity:.8;margin-top:14px">Waxaa kuu diray: <b id="fr"></b> ❤️</p>
+  <button class="btn" id="again" style="margin-top:26px">Mar kale 🔁</button>
+</section>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Link-ga ku dar ?name=Magac&from=Magacaaga
+const Q=new URLSearchParams(location.search);
+const NAME=(Q.get('name')||'Shadia').slice(0,24),FROM=(Q.get('from')||'Cabdisalaam').slice(0,24),FILM=(Q.get('film')||'CABSHIA').slice(0,24);
+// Sawirada (isla folder-ka index.html ku jira)
+const PHOTOS=['Screenshot_20261012-021803.jpg','a74adc70eb0c405081d368e913c03e27.jpg','Screenshot_20261019-135211.jpg','IMG-20261029-WA0026.jpg','Screenshot_20261019-141745.jpg','Screenshot_20261112-075956.jpg'];
+const PUZZLE_PHOTO='Screenshot_20261112-075956.jpg';
+document.title=FILM;
+$('#shn').textContent=NAME;$('#en').textContent='Hambalyo '+NAME+'!';$('#fr').textContent=FROM;
+function go(id){document.querySelectorAll('.sc').forEach(e=>e.classList.remove('on'));$(id).classList.add('on')}
+
+/* ===== 1) FILIM ===== */
+const FS=[
+ ['<small>'+esc(FROM)+' Productions</small>',2600],
+ ['<small>wuxuu soo bandhigayaa</small>',2200],
+ ['<small>Jilaayaasha filimka</small><h1>'+esc(NAME)+'</h1>',3000],
+ ['<small>Magaca filimka</small><h1>'+esc(FILM)+'</h1>',3200],
+ 
+ ['<small>Agaasimaha filimka</small><h1>'+esc(FROM)+'</h1>',3000],
+ ['<small>Jilaaga filimka</small><h1>'+esc(FROM)+'</h1>',3000],
+ ['<small>Muuqaalada</small><h1 style="font-size:26px">Farxad · Qosol · Quruxdo</h1>',3000]
+];
+let fi=0;
+function fstep(){
+  const ft=$('#ft');ft.style.animation='none';
+  if(fi>=FS.length){
+    ft.innerHTML='<small>Magaca filimka</small><h1>'+esc(FILM)+'</h1>';
+    ft.style.opacity=1;$('#start').classList.add('show');return;
+  }
+  const [h,ms]=FS[fi++];
+  ft.innerHTML=h;ft.offsetWidth;
+  ft.style.animation='ftx '+ms+'ms ease forwards';
+  setTimeout(fstep,ms+150);
+}
+setTimeout(fstep,500);
+$('#start').onclick=()=>{go('#stories');buildStories()};
+
+/* ===== 2) SHEEKOOYIN (STORIES) ===== */
+const CAP=['Maanta waa maalintaada, '+NAME+' 🎂','Dhoolacadeyntaadu waa iftiin ✨','faraxdu siday noqon lahyd tushtada laanted💖','Saaxiib fiican ayaad tahay 🫶','Waxaad mudan tahay wax kasta oo qurux badan 🌷','film cusub, bandhig cusub 🌈'];
+const SLS=PHOTOS.map((p,i)=>({img:p,t:CAP[i]})).concat([{t:'Hal waxyaalo kale ayaa kuu sugan... 🧩'}]);
+const GR=['#ff5fa2,#7b2ff7','#ff9a4d,#d6336c','#43cea2,#185a9d','#f857a6,#ff5858','#7f7fd5,#86a8e7','#f7971e,#e8338a','#c471f5,#fa71cd'];
+const DUR=4200;let tm;
+function buildStories(){
+  $('#pb').innerHTML=SLS.map(()=>'<i><b></b></i>').join('');
+  $('#slides').innerHTML=SLS.map((s,i)=>'<div class="sl" style="background:linear-gradient(160deg,'+GR[i%GR.length]+')">'+(s.img?'<img src="'+s.img+'" alt="" onerror="this.remove()">':'')+'<div class="cap">'+esc(s.t)+'</div></div>').join('');
+  st(0);
+}
+function st(i){
+  clearTimeout(tm);
+  if(i<0)i=0;
+  if(i>=SLS.length){go('#puz');initPuzzle();return}
+  document.querySelectorAll('.sl').forEach((e,k)=>e.classList.toggle('on',k===i));
+  document.querySelectorAll('#pb b').forEach((b,k)=>{
+    b.style.transition='none';b.style.width=k<i?'100%':'0';
+    if(k===i){b.offsetWidth;b.style.transition='width '+DUR+'ms linear';b.style.width='100%'}
+  });
+  tm=setTimeout(()=>st(i+1),DUR);
+  st.i=i;
+}
+$('#stories').addEventListener('click',e=>{st(e.clientX<innerWidth*.3?st.i-1:st.i+1)});
+
+/* ===== 3) PUZZLE ===== */
+let order=[],sel=-1,pimg='',solved=false;
+function initPuzzle(){
+  const im=new Image();
+  im.onload=()=>{
+    const c=document.createElement('canvas');c.width=c.height=600;
+    const s=Math.min(im.width,im.height);
+    c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)*.12,s,s,0,0,600,600);
+    try{build(c.toDataURL('image/jpeg',.85))}catch(e){build(fallback())}
+  };
+  im.onerror=()=>build(fallback());
+  im.src=PUZZLE_PHOTO;
+}
+function fallback(){
+  const c=document.createElement('canvas');c.width=c.height=600;const g=c.getContext('2d');
+  const gr=g.createLinearGradient(0,0,600,600);gr.addColorStop(0,'#ff5fa2');gr.addColorStop(1,'#7b2ff7');
+  g.fillStyle=gr;g.fillRect(0,0,600,600);
+  g.textAlign='center';g.fillStyle='#fff';g.font='200px serif';g.fillText('🎂',300,300);
+  g.font='700 60px sans-serif';g.fillText(NAME,300,440);
+  return c.toDataURL('image/jpeg',.9);
+}
+function build(url){
+  pimg=url;solved=false;sel=-1;
+  order=[0,1,2,3,4,5,6,7,8];
+  do{for(let i=8;i>0;i--){const j=Math.random()*(i+1)|0;[order[i],order[j]]=[order[j],order[i]]}}while(order.every((v,i)=>v===i));
+  $('#board').className='';render();
+}
+function render(){
+  $('#board').innerHTML=order.map((p,i)=>'<div class="pc'+(i===sel?' sel':'')+'" data-i="'+i+'" style="background-image:url('+pimg+');background-position:'+(p%3)*50+'% '+(Math.floor(p/3))*50+'%"></div>').join('');
+}
+$('#board').addEventListener('click',e=>{
+  const t=e.target.closest('.pc');if(!t||solved)return;
+  const i=+t.dataset.i;
+  if(sel<0){sel=i}
+  else if(sel===i){sel=-1}
+  else{[order[sel],order[i]]=[order[i],order[sel]];sel=-1}
+  render();
+  if(order.every((v,k)=>v===k)){solved=true;$('#board').classList.add('done');setTimeout(finish,1800)}
+});
+
+/* ===== 4) DHAMMAAD ===== */
+const CC=['#ff5fa2','#ffd84d','#5ec8ff','#a47be8','#ff8a3d','#ffffff'];
+function confetti(n){
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span');s.className='cf';
+    s.style.left=Math.random()*100+'vw';s.style.background=CC[i%CC.length];
+    document.body.appendChild(s);
+    const a=s.animate([{transform:'translateY(-20px) rotate(0)'},{transform:'translateY('+(innerHeight+40)+'px) rotate('+(Math.random()*720)+'deg)'}],{duration:2500+Math.random()*2500,delay:Math.random()*1500,easing:'linear',fill:'backwards'});
+    a.onfinish=()=>s.remove();
+  }
+}
+function finish(){go('#end');confetti(90);setInterval(()=>confetti(40),2500)}
+$('#again').onclick=()=>location.reload();
+</script>
+</body>
+</html>
 
